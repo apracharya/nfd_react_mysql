@@ -1,0 +1,100 @@
+/* Body styling */
+.add-film-body {
+    /* font-family: sans-serif; */
+    background-image: linear-gradient(to right, #f5f5f5, #e0c3f9);
+    color: #333;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  /* Form styling */
+  .add-film-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    margin-top: 0px !important;
+    width: 500px;
+  }
+
+  /* Heading styling */
+  .add-film-h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* Label styling */
+  .add-film-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  /* Input styling */
+  /* input[type="text"], input[type="date"], input[type="password"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  } */
+
+  /* Submit button styling */
+  input[type="submit"] {
+    background-color: #be74ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #bf8efb;
+  }
+  input[type="submit"]:active {
+    background-color: #a25ef6;
+  }
+
+  /* Release date specific styling */
+  .release-date {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+ 
+
+  .release-date input {
+    flex-grow: 1;
+  }
+
+  .calendar-icon{
+      vertical-align: top;
+  }
+
+  .calendar-div{
+      margin-bottom: 15px;
+
+  }
+
+  .release-date .calendar-icon {
+    margin-left: 10px;
+    width: 50px;
+    cursor: pointer;
+  }
+
+  /* Placeholder image for calendar icon - replace with your desired icon */
+  .release-date .calendar-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .release-date input.ui-state-active {
+    background-color: #acfaa4; /* Light green for active background */
+  }

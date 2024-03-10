@@ -1,0 +1,150 @@
+body{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    height: 70px;
+    justify-content: space-between;
+    background: #272727;
+    padding-left: 16px;
+    font: 13px "Roboto";
+}
+
+.header-left{
+    display: flex;
+    height: 70px;
+    
+    align-items: center;
+    background: #272727;
+}
+
+.left-1{
+    width: 51px;
+    height: 39px;
+    background-color: transparent;
+    color: rgb(195, 193, 193);
+    border-radius: 5px;
+    border: none;
+    transition: background-color 150ms;
+}
+.left-1:hover {
+    background-color: rgb(23, 23, 23);
+}
+.nfd-logo{
+    width: 100%;
+}
+
+.left-2{
+    width: 86px;
+    height: 39px;
+    border: none;
+    vertical-align: middle;
+    background-color: transparent;
+    color: rgb(195, 193, 193);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.header-center{
+    display: flex;
+    flex-direction: row;
+    width: 670px;
+    min-width: 0px;
+    padding: 0px 0px 0px 40px;
+    align-items: center;
+    
+    background: #272727;
+}
+
+.search-div{
+    display: flex;
+    height: 37px;
+    width: 636px;
+    min-width: 0px;
+    flex: 1;
+    border: 1px solid #020202;
+    border-radius: 5px 0px 0px 5px;
+    margin: 0px 0px 0px 32px;
+    align-items: center;
+}
+
+.search-bar{
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 26px;
+    min-width: 0px;
+    background: transparent;
+    border: none;
+    padding-left: 11px;
+    font-size: large;
+    border-radius: 5px 0px 0px 5px;
+    color: rgb(179, 179, 179);
+}
+
+.search-button{
+    width: 68px;
+    height: 37px;
+    border: 1px solid black;
+    border-left: 0px;
+    transition: background-color 150ms;
+    background-color: #4d4c4c;
+    border-radius: 0px 5px 5px 0px;
+    color: rgb(186, 183, 183);
+}
+.search-button:hover {
+    background-color: #3d3d3d;
+}
+
+.voice-search{
+    width: 39px;
+    height: 39px;
+    
+    background: transparent;
+    border: none;
+    margin-left: 15px;
+    border-radius: 20px;
+}
+
+.header-right{
+    display: flex;
+    width: 273px;
+    height: 70px;
+    padding: 0px 29px 0px 0px;
+    justify-content: flex-end;
+    align-items: center;
+    
+    background: #272727;
+}
+.button-header-right{
+    width: 81px;
+    height: 39px;
+    background-color: transparent;
+    border-radius: 7px;
+    border: none;
+    color: rgb(195, 193, 193);
+    transition: background-color 150ms;
+}
+.signIn-button{
+    width: 75px;
+    height: 39px;
+    background-color: transparent;
+    border-radius: 7px;
+    border: none;
+    color: #000000A6;
+    transition: background-color 150ms;
+}
+
+
+.button-header-right:hover, .signIn-button:hover{
+    background-color: rgb(23, 23, 23) !important;
+    color: #ffffffEE;
+}
+
+.signIn-button:active{
+    background-color: rgb(68, 68, 68) !important;
+}

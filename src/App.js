@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MyRoute from "./Links/MyRoute";
+import About from "./components/About";
+import Navbar from "./components/Navbar";
+import "./styles/Login.css";
+import "./styles/add-movie.css";
+import "./styles/movie-grid.css";
+import "./styles/header.css";
+import "./styles/texts.css";
 
 function App() {
+  const logo = './logo/Asset 15.png';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar logo={logo}/>
+      <MyRoute />
+      <About logo={logo}/>
+    </>
   );
 }
 

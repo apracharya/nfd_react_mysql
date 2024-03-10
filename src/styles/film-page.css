@@ -1,0 +1,113 @@
+.film-detail-div{
+    position: relative;
+    height: 400px;
+    /* background: linear-gradient(to left, transparent, mistyrose),url("../../public/thumbnails/cover/bijulimachine_cover.jpg"); */
+}
+
+
+.main-flex{
+    display: inline-block;
+    font-family: Poppins;
+    font-size: 24px;
+    color: rgb(235, 207, 207);
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    gap: 20px;
+    z-index: 2;
+    background: linear-gradient(90deg, rgb(21.961% 23.137% 55.294%) 0%, rgb(21.957% 23.132% 55.305% / 0.9997666015625) 6.25%, rgb(21.928% 23.092% 55.381% / 0.9981328125) 12.5%, rgb(21.85% 22.985% 55.589% / 0.9936982421875) 18.75%, rgb(21.697% 22.776% 55.993% / 0.9850625) 25%, rgb(21.446% 22.431% 56.658% / 0.9708251953125) 31.25%, rgb(21.072% 21.917% 57.652% / 0.9495859375) 37.5%, rgb(20.549% 21.2% 59.038% / 0.9199443359375) 43.75%, rgb(19.853% 20.245% 60.882% / 0.8805000000000001) 50%, rgb(18.96% 19.019% 63.251% / 0.8298525390625) 56.25%, rgb(17.844% 17.489% 66.209% / 0.7666015625) 62.5%, rgb(16.481% 15.619% 69.821% / 0.6893466796875001) 68.75%, rgb(14.847% 13.376% 74.154% / 0.5966875) 75%, rgb(12.916% 10.727% 79.273% / 0.48722363281250003) 81.25%, rgb(10.664% 7.637% 85.244% / 0.3595546875000001) 87.5%, rgb(8.066% 4.073% 92.131% / 0.2122802734375) 93.75%, rgb(5.098% 0% 100% / 0.04400000000000004) 100% );
+    /* background-image: linear-gradient(to left, rgba(13, 0, 255, 0.044), rgb(91, 95, 203)); */
+}
+
+.movie-poster{
+    height: 350px;
+    margin-left: 35px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.movie-detail{
+    margin-top: 40px;
+    width:600px;
+    height: 350px;
+    /* background-color: red; */
+}
+
+.year-runtime{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 12px;
+    padding-top: 7px;
+}
+
+.movie-genre{
+    font-size: 12px;
+}
+
+.rating-export {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.movie-rating {
+    font-size: 22px;
+    padding: 5px 8px 5px 8px;
+    background-color: rgba(255, 196, 0, 0.819);
+    height: 45px;
+    border-radius: 25px;
+    color: black;
+    font-family: Roboto;
+    font-weight: 700;
+}
+
+/* .para{
+    display: inline;
+} */
+
+.export-button{
+    margin-left: 10px;
+    max-height: 20px;
+    padding: 0;
+    border: 0;
+    align-items: center;
+    background-color: transparent;
+}
+
+.export-icon{
+    width: 18px;
+    padding-bottom: 15px;
+}
+
+.movie-description{
+    font-size: 14px;
+}
+
+.movie-extra-details {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 13px;
+}
+
+.movie-extra-key {
+    flex-direction: row;
+}
+
+
+
+
+.cover-div{
+    padding-top: 35px;
+    /* right: 0px; */
+    background: linear-gradient(to left, transparent, mistyrose), url("../../public/thumbnails/cover/bijulimachine_cover.jpg") 1500px;
+    right: 0px;
+    height: 410px;
+    
+
+}

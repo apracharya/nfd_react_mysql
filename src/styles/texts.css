@@ -1,0 +1,28 @@
+.align-center{
+    text-align: center;
+}
+
+.font-small {
+    font-size: small;
+}
+
+.paddingL-5{
+    padding-left: 5px;
+}
+
+.paddingR-5{
+    padding-right: 5px;
+}
+
+.paddingT-5{
+    padding-top: 5px;
+}
+
+.paddingB-5{
+    padding-bottom: 5px;
+}
+
+html{
+    font-family: "Roboto";
+    /* font-size: 13px; */
+}
