@@ -1,0 +1,27 @@
+/* PaginationComponent.css */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .page-button {
+    padding: 10px 15px;
+    margin: auto 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: background-color 150ms; 
+  }
+
+  .page-button:hover {
+    background-color: #e9f3fe;
+  }
+  
+  .page-button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

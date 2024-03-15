@@ -1,21 +1,21 @@
 import "./App.css";
 import MyRoute from "./Links/MyRoute";
-import About from "./components/About";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./styles/Login.css";
 import "./styles/add-movie.css";
-import "./styles/movie-grid.css";
 import "./styles/header.css";
+import "./styles/movie-grid.css";
 import "./styles/texts.css";
 
 function App() {
-  const logo = './logo/Asset 15.png';
+  const logo = 'http://localhost:8080/films/image/Asset15.png';
 
   return (
     <>
       <Navbar logo={logo}/>
       <MyRoute />
-      <About logo={logo}/>
+      <Footer logo={logo}/>
     </>
   );
 }
