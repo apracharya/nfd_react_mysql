@@ -6,12 +6,11 @@
 }
 
 .main-left{
-    width: 150px;
-    min-width: 0px;
+    min-width: 120px;
 }
 .main-right{
-    width: 150px;
-    min-width: 0px;
+    min-width: 120px;
+    
 }
 
 .film-grid {

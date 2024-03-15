@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import './Navbar.css'; // Import CSS for styling
 import PropTypes from "prop-types";
 import LoginForm from './LoginForm';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,18 @@ function Navbar(props) {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const [category, setCategory] = useState([]);
+  
+  useEffect(()=>{
+    axios.get(`http://localhost:8080/category/read`)
+    .then((response)=>{
+      console.log(response);
+      setCategory(response.data);
+    })
+  }, [])
+
+  let navigate = useNavigate();
 
   return (
     <div>
@@ -70,9 +83,9 @@ function Navbar(props) {
                   Genre
                 </span>
                 <ul className="dropdown-menu">
-                  <li><button className="dropdown-item">Action</button></li>
-                  <li><button className="dropdown-item">Romantic</button></li>
-                  <li><button className="dropdown-item">Documentary</button></li>
+                  {category.map((item, i)=>{
+                    return (<li key={i}><button onClick={()=>{navigate(`/category/${item.categoryId}`)}} className="dropdown-item">{item?.categoryTitle}</button></li>
+                  )})}
                   <li><hr className="dropdown-divider" /></li>
                   <li><button className="dropdown-item">Something else here</button></li>
                 </ul>

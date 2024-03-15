@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import FilmCard from './FilmCard';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import PaginationComponent from '../PaginationComponent';
 
 /* const films = [
   {
@@ -104,25 +105,33 @@ import { useNavigate } from 'react-router-dom';
 
 
 const FilmGrid = () => {
+  let params = useParams();
   const [films, setFilms] = useState([]);
+  let page = parseInt(params.page) - 1;
 
   useEffect(()=>{
-    axios.get(`http://localhost:8080/films/read`)
+    axios.get(`http://localhost:8080/films/read?pageSize=10&pageNumber=${page}`)
     .then((response)=>{
       console.log(response);
-      setFilms(response.data);
+      setFilms(response.data.content);
     })
-  }, [])
+  }, [page])
 
   let navigate = useNavigate();
 
+  let pageNo = page + 1;
+
   return (
-    <div className="film-grid">
-      {films.map((film, i) => (
-        <div key={i} onClick={()=>{navigate(`/films/${film.id}`)}}>
-          <FilmCard {...film} />
-        </div>
-      ))}
+    <div>
+      <div style={{margin: '40px 0 -30px 20px', fontSize: '20px'}}>Page {pageNo}</div>
+      <div className="film-grid">
+        {films.map((film, i) => (
+          <div key={i} onClick={()=>{navigate(`/films/${film.id}`)}}>
+            <FilmCard {...film} />
+          </div>
+        ))}
+      </div>
+      <PaginationComponent />
     </div>
   );
 };

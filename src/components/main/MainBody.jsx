@@ -5,7 +5,8 @@ const MainBody = () => {
   return (
     <div className="main-body">
       <div className="main-left"></div>
-      <FilmGrid />
+      <FilmGrid /> <br />
+      
       <div className='main-right'></div>
     </div>
   );
