@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import FilmCard from './FilmCard';
+
+import React, { useEffect, useState } from 'react';
+import { searchFilm } from '../services/film-service';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import Base from './Base';
+import FilmCard from './FilmCard';
 
-const Category = () => {
-  let params = useParams();
+const Search = () => {
   const [films, setFilms] = useState([]);
-
+  let params = useParams();
   useEffect(()=>{
-    axios.get(`http://localhost:8080/films/read/category/${params.id}`)
-    .then((response)=>{
-      console.log(response);
-      setFilms(response.data);
+    
+    searchFilm(params.keyword).then((data)=>{
+      console.log(data);
+      setFilms(data);
     })
-  }, [params.id]);
 
-  let navigate = useNavigate();
+  }, [params.keyword]);
+
+  const navigate = useNavigate();
+  
 
   return (
     <Base>
@@ -31,7 +33,7 @@ const Category = () => {
         </div>
       </div>
     </Base>
-  );
+  )
 }
 
-export default Category
+export default Search;

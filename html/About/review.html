@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .review-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .review {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .review h3 {
+            margin-top: 0;
+            color: #020910;
+        }
+        .review-date {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .upvote {
+            font-size: 20px;
+            color: #3498db;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .upvote:hover {
+            color: #2980b9;
+        }
+        .stars-container {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .star {
+            font-size: 20px;
+            color: #f1c40f;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .star.active {
+            color: #f1c40f;
+        }
+        .rating {
+            font-size: 16px;
+            color: #17a2b8; /* Change color for rating */
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="review-container">
+    <div class="review">
+        <h3>Prashant Adhikari</h3>
+        <div class="review-date">Posted on January 1, 2023</div>
+        <div class="upvote" onclick="upvote(this)">▲ Upvote</div>
+        <div class="stars-container" onclick="rate(this)">
+            <span class="star">★</span>
+        </div>
+        <span class="rating">10/10</span>
+        <p class="review-description">There's a reason this is rated the #1. It is the same reason you watch this movie every time you see it on tv even if it's already half way over. It's captivating, brilliant and full of heart. It's one of the best films ever made.</p>
+    </div>
+    <div class="review">
+        <h3>Apurva Acharya</h3>
+        <div class="review-date">Posted on February 15, 2023</div>
+        <div class="upvote" onclick="upvote(this)">▲ Upvote</div>
+        <div class="stars-container" onclick="rate(this)">
+            <span class="star">★</span>
+        </div>
+        <span class="rating">9/10</span>
+        <p class="review-description">Could a movie be any more perfect? This movie is just absolutely stunning in so many ways. Acting perfect, storyline perfect, soundtrack perfect, emotional drama perfect, everything about this movie is perfect.</p>
+    </div>
+    <div class="review">
+        <h3>Bishal Acharya</h3>
+        <div class="review-date">Posted on March 10, 2023</div>
+        <div class="upvote" onclick="upvote(this)">▲ Upvote</div>
+        <div class="stars-container" onclick="rate(this)">
+            <span class="star">★</span>
+        </div>
+        <span class="rating">8/10</span>
+        <p class="review-description">The characters are so well developed and well interpreted by the actors that you really feel for them which makes the whole story even more compelling.</p>
+    </div>
+</div>
+
+<script>   
+
+    function upvote(upvoteElement) {
+        upvoteElement.classList.add('upvoted');
+        upvoteElement.textContent = '▲ Upvoted';
+    }
+</script>
+
+</body>
+</html>

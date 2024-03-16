@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 // import '../styles/add-movie.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Base from './main/Base';
 
 const AddMovie = () => {
 
@@ -42,6 +43,8 @@ const AddMovie = () => {
       crew: crew,
       rating: rating
     };
+    
+    console.log(film);
 
     try {
       let result = await axios({
@@ -76,7 +79,7 @@ const AddMovie = () => {
   };
 
   return (
-    <div>
+    <Base>
       <ToastContainer />
       <div className='add-film-body'>
         <form className='add-film-form' onSubmit={handleSumbit}>
@@ -111,7 +114,7 @@ const AddMovie = () => {
           <input type="submit" value="Submit Film Details" />
         </form>
       </div>
-    </div>
+    </Base>
   )
 }
 

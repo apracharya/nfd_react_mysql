@@ -1,63 +1,179 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import '../styles/SignUp.css'
-const SignUp = () => {
+import React, { useEffect, useState } from 'react'
+import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
+import { signup } from './services/user-service';
 
-  const data = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    username: "",
-    password: ""
+import { toast } from 'react-toastify';
+import Base from './main/Base';
+const Signup = () => {
+
+  const [data, setData] = useState({
+    username: '',
+    firstName: '',
+    lastName: '',
+    password: ''
+  });
+
+  const [error, setError] = useState({
+    errors: {},
+    isError: false
+  })
+
+  useEffect(()=>{
+    
+  }, [data])
+
+  const handleChange = (event, property) => {
+    setData({ ...data, [property]: event.target.value });
   }
 
-  const handleData = (e)=>{
-    setUserData({...userData, [e.target.name]: e.target.value});
+  const resetData = ()=>{
+    setData({
+      username: '',
+      firstName: '',
+      lastName: '',
+      password: ''
+    })
   }
 
-  const [userData, setUserData] = useState(data);
-
-  const handleSubmit = (e)=>{
+  const submitForm = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/users/create`, userData)
-    .then((response)=>{
-      console.log(response);
-    });
+    // console.log(data);
+
+    // call server
+    signup(data).then((response)=>{
+      // console.log(response);
+
+      /* if(error.isError) {
+        toast.error("Form data is invalid!");
+        setError({...error, isError: false});
+        return;
+      } */
+
+
+      // console.log("success log")
+      toast.success("User Registered Successfully")
+      setData({
+        username: '',
+        firstName: '',
+        lastName: '',
+        password: ''
+      })
+    }).catch((error)=>{
+      // console.log(error);
+      // console.log("error log");
+      // handle error
+      toast.error("Something went wrong");
+      setError({
+        errors: error,
+        isError: true
+      })
+
+    })
   }
 
   return (
-    <div className='signup-form-background'>
-      <div className="signup-form-body">
-        <form  className='form-signup' id="signup-form">
-            <h2 >Sign Up</h2>
+    <Base>
+      <Container>
 
-            <label htmlFor='firstName'>First Name:</label>
-            <input value={userData.firstName} onChange={handleData}
-              className='input' type="text" id="firstName" name="firstName" required />
-            
-            <label htmlFor='lastName'>Last Name:</label>
-            <input value={userData.lastName} onChange={handleData} 
-              className='input' type="text" id="lastName" name="lastName" required />
+        <Row>
+          <Col sm={{size:6, offset:3}}>
+            <Card>
+              <CardHeader>
+                <h3>Fill Info to Register</h3>
+              </CardHeader>
 
-            <label htmlFor="username">Username:</label>
-            <input value={userData.username} onChange={handleData}
-              className='input' type="text" id="username" name="username" required />
-            
-            <label htmlFor="email">Email:</label>
-            <input value={userData.email} onChange={handleData}
-              type="email" id="email" name="email" required />
-            
-            <label htmlFor="password">Password:</label>
-            <input value={userData.password} onChange={handleData}
-              type="password" id="password" name="password" required />            
+              <CardBody>
 
-            <button onClick={handleSubmit} className='signup-button' type="submit">
-              Sign Up
-            </button>
-        </form>
-      </div>
-    </div>
+                <Form onSubmit={submitForm}>
+                  <FormGroup>
+                    <Label htmlFor="username">Username: </Label>
+                    <Input
+                      type="text" 
+                      placeholder="Enter username here" 
+                      id="username"
+                      onChange={(e)=>handleChange(e, 'username')}
+                      value={data.username}
+                      invalid={error.errors?.response?.data?.message === 'User already exists' || error.errors?.response?.data?.username
+                        ? true : false}
+                      
+                    />
+
+                    <FormFeedback>
+                      {error.errors?.response?.data?.message}
+                      {error.errors?.response?.data?.username}
+                    </FormFeedback>
+                  </FormGroup>
+
+                  <FormGroup>
+                    <Label htmlFor="fname">First Name: </Label>
+                    <Input 
+                      type="text" 
+                      placeholder="Enter first name here" 
+                      id="firstName"
+                      onChange={(e)=>handleChange(e, 'firstName')}
+                      value={data.firstName}
+                      invalid={error.errors?.response?.data?.firstName
+                        ? true : false}
+                      />
+
+                    <FormFeedback>
+                      {error.errors?.response?.data?.lastName}
+                    </FormFeedback>
+
+                  </FormGroup>
+
+                  <FormGroup>
+                    <Label htmlFor="lname">Last Name: </Label>
+                    <Input 
+                      type="text" 
+                      placeholder="Enter last name here" 
+                      id="lastName"
+                      onChange={(e)=>handleChange(e, 'lastName')}
+                      value={data.lastName}
+                      invalid={error.errors?.response?.data?.lastName
+                        ? true : false}
+                    />
+
+                    <FormFeedback>
+                      {error.errors?.response?.data?.lastName}
+                    </FormFeedback>
+
+                  </FormGroup>
+
+                  <FormGroup>
+                    <Label htmlFor="password">Password: </Label>
+                    <Input 
+                      type="password" 
+                      placeholder="Enter password here" 
+                      id="password"
+                      onChange={(e)=>handleChange(e, 'password')}
+                      value={data.password}
+                      invalid={error.errors?.response?.data?.password
+                        ? true : false}
+                    />
+                    <FormFeedback>
+                      {error.errors?.response?.data?.password}
+                    </FormFeedback>
+                  </FormGroup>
+                  <Container>
+                    <Button className='mx-2'>Register</Button>
+                    <Button onClick={resetData}>Reset</Button>
+                  </Container>
+                </Form>
+              </CardBody>
+
+              
+
+
+            </Card>
+          </Col>
+
+        </Row>
+
+        
+      </Container>
+    </Base>
   )
 }
 
-export default SignUp
+export default Signup

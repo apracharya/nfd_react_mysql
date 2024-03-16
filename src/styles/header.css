@@ -139,8 +139,18 @@ body{
     transition: background-color 150ms;
 }
 
+.username-button{
+    width: 90px;
+    height: 39px;
+    background-color: transparent;
+    border-radius: 7px;
+    border: none;
+    color: #000000A6;
+    transition: background-color 150ms;
+}
 
-.button-header-right:hover, .signIn-button:hover{
+
+.username-button:hover, .button-header-right:hover, .signIn-button:hover{
     background-color: rgb(23, 23, 23) !important;
     color: #ffffffEE;
 }

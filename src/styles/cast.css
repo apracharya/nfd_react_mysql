@@ -1,6 +1,79 @@
-.cast-header {
+
+.cast-body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+.cast-h1 {
+    text-align: center;
+    color: #333;
+}
+
+.cast-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.cast-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cast-list li:hover {
+    background-color: #f9f9f9;
+}
+
+.cast-list li h3 {
+    margin: 0;
+    color: #333;
+}
+
+.cast-list li p {
+    margin: 0;
+    color: #777;
+}
+
+/* .cast-header {
     font-size: 25px;
     color: rgb(30, 30, 30);
     padding-bottom: 10px;
+    padding-left: 30px;
 }
 
+.cast-body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    align-items: left;
+}
+.container {
+    max-width: 800px;
+    margin: 0;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+.cast-h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.cast-ul {
+    list-style: none;
+    padding: 0;
+    columns: 3;
+}
+.cast-li {
+    font-size: 18px;
+    margin-bottom: 10px;
+} */

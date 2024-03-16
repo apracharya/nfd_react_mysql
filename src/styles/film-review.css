@@ -1,0 +1,57 @@
+.review-body {
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+.review-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.review {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+.review h3 {
+    margin-top: 0;
+    color: #020910;
+}
+.review-date {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.upvote {
+    font-size: 20px;
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.upvote:hover {
+    color: #2980b9;
+}
+.stars-container {
+    display: inline-block;
+    margin-left: 10px;
+}
+.star {
+    font-size: 20px;
+    color: #f1c40f;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.star.active {
+    color: #f1c40f;
+}
+.rating {
+    font-size: 16px;
+    color: #17a2b8; /* Change color for rating */
+    font-weight: bold;
+    margin-left: 5px;
+}
