@@ -3,22 +3,25 @@ import '../../styles/film-page.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Cast from '../Cast';
+import Review from './Review';
+import Base from './Base';
 
 const FilmPage = () => {
   let params = useParams();
   const [film, setFilm] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   useEffect(()=>{
     axios.get(`http://localhost:8080/films/read/${params.id}`)
     .then((response)=>{
-      console.log(response);
       setFilm(response.data);
+      setReviews(response.data.reviews);
     })
   }, [params.id])
 
 
   return (
-    <div>
+    <Base>
       <div className='film-detail-div'>
         <div className='main-flex'>
           <img className='movie-poster' src={`http://localhost:8080/films/image/${film.thumbnailSrc}`} alt={film.title} />
@@ -60,9 +63,10 @@ const FilmPage = () => {
         <div className='cover-div'>
           {/* <img src="/thumbnails/cover/bijulimachine_cover.jpg" alt="cover" className='movie-cover' /> */}
         </div>
-      </div> <br /> <br />
-      <Cast casts={film.cast}/>
-    </div>
+      </div> <br />
+      <Cast title={film.title} casts={film.cast}/>
+      <Review id={params.id} title={film.title} reviews={reviews}/>
+    </Base>
   )
 }
 

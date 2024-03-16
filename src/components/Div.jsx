@@ -4,7 +4,7 @@ const Div = () => {
   return (
     <div className='div'>
         <div className="name">2023</div>
-        <div className="class">ROMANTIC FUCKERY</div>
+        <div className="className">ROMANTIC</div>
         <div className="roll">Yamaraj</div>
     </div>
   )

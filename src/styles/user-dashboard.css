@@ -1,0 +1,48 @@
+.dash-body {
+    font-size: 1.3rem;
+    font-family: Roboto, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.dash-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dash-h1 {
+    text-align: center;
+    color: #333;
+}
+
+.user-info {
+    margin-top: 20px;
+}
+
+.user-info p {
+    margin: 10px 0;
+}
+
+.user-info label {
+    font-weight: bold;
+}
+
+.user-info span {
+    color: #666;
+}
+
+.user-role {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.user-role span {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fcc121;
+    color: #fff;
+    border-radius: 20px;
+}

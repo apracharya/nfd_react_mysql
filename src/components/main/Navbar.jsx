@@ -1,36 +1,59 @@
 import React, { useEffect, useState } from 'react';
 // import './Navbar.css'; // Import CSS for styling
 import PropTypes from "prop-types";
-import LoginForm from './LoginForm';
+// import LoginForm from '../LoginForm';
 import { NavLink, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { toast } from 'react-toastify';
+import { doLogout, getCurrentUser, isLoggedIn } from '../auth/auth';
+import { loadAllCategories } from '../services/category-service';
 
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [loginVisible, setLoginVisible] = useState(false);
 
-  const handleLoginVisible = ()=>{
-    if(loginVisible === false){
-      setLoginVisible(true);
-    } else {
-      setLoginVisible(false);
-    }
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState(undefined);
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setLogin(isLoggedIn());
+    setUser(getCurrentUser());  
+  } , [])
+
+  const logout = ()=>{
+    doLogout(()=>{
+      setLogin(false);
+      setUser(undefined);
+      toast.success("User logged out");
+    });
+    navigate('/');
   }
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const [category, setCategory] = useState([]);
+  const [keyword, setKeyword] = useState("");
+
+  const handleKeywordChange= (e)=>{
+    setKeyword(e.target.value);
+    console.log(e.target.value);
+  }
+
+  const handleSearch = (e)=>{
+    e.preventDefault();
+    navigate(`/search/${keyword}`);
+  }
   
   useEffect(()=>{
-    axios.get(`http://localhost:8080/category/read`)
-    .then((response)=>{
-      console.log(response);
-      setCategory(response.data);
+    
+    // axios.get(`http://localhost:8080/category/read`)
+    loadAllCategories().then((data)=>{
+      setCategory(data);
     })
   }, [])
 
-  let navigate = useNavigate();
 
   return (
     <div>
@@ -83,7 +106,7 @@ function Navbar(props) {
                   Genre
                 </span>
                 <ul className="dropdown-menu">
-                  {category.map((item, i)=>{
+                  {category?.map((item, i)=>{
                     return (<li key={i}><button onClick={()=>{navigate(`/category/${item.categoryId}`)}} className="dropdown-item">{item?.categoryTitle}</button></li>
                   )})}
                   <li><hr className="dropdown-divider" /></li>
@@ -95,16 +118,52 @@ function Navbar(props) {
               </li>
             </ul>
 
-            <form className="d-flex mx-2 my-2" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <form onSubmit={handleSearch} className="d-flex mx-2 my-2" role="search">
+              <input className="form-control me-2"
+                type="search"
+                placeholder="Search" 
+                aria-label="Search"
+                name='search'
+                id='search'
+                onChange={handleKeywordChange} />
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <button className='signIn-button' onClick={handleLoginVisible}>Sign In</button>
-            <NavLink to='signup'><button className='signIn-button'>Sign Up</button></NavLink>
+            <div>
+                {
+                login && (
+                  <>
+                    <NavLink to='/user/dashboard'>
+                      <button className='username-button'>
+                        {user}
+                      </button>
+                    </NavLink>
+                    
+                    <NavLink>
+                      <button 
+                        className='signIn-button'
+                        onClick={logout}>Logout</button>
+                    </NavLink>
+                  </>
+                )}
+
+                {
+                  !login && (
+                    <>
+                    <NavLink to='/signin'>
+                      <button className='signIn-button' /* onClick={handleLoginVisible} */>Sign In</button>
+                    </NavLink>
+                    <NavLink to='/signup'>
+                      <button className='signIn-button'>Sign Up</button>
+                    </NavLink>
+                    </>
+                  )
+                }
+              
+            </div>
           </div>
         </div>
       </nav>
-      {loginVisible?<LoginForm visible="handleLoginVisible"/>:null}
+      {/* {loginVisible?<LoginForm visible="handleLoginVisible"/>:null} */}
     </div>
   );
 }
