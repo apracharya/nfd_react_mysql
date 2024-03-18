@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
-import { login } from './services/user-service';
-import { doLogin } from './auth/auth';
+import { login } from '../services/user-service';
+import { doLogin } from '../auth/auth';
 import { useNavigate } from 'react-router-dom';
-import Base from './main/Base';
+import Base from '../main/Base';
 
 const Login = () => {
 
@@ -32,10 +32,10 @@ const Login = () => {
 
     // call server to generate token
     login(loginDetails).then((jwtTokenData)=>{
-      console.log(jwtTokenData);
+      // console.log(jwtTokenData);
 
       doLogin(jwtTokenData, ()=>{
-        console.log("login detail is saved to local storage");
+        // console.log("login detail is saved to local storage");
         // redirect to home page
         navigate('/');
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .stars-container {
+            display: inline-block;
+        }
+        .star {
+            font-size: 20px;
+            color: #ddd;
+            cursor: pointer;
+            margin-right: 3px;
+        }
+        .star:hover,
+        .star.active {
+            color: #f1c40f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="stars-container">
+    <span class="star" onclick="rate(this, 1)">★</span><span class="star" onclick="rate(this, 2)">★</span><span class="star" onclick="rate(this, 3)">★</span><span class="star" onclick="rate(this, 4)">★</span><span class="star" onclick="rate(this, 5)">★</span>
+</div>
+
+<script>
+    function rate(star, rating) {
+        const stars = star.parentElement.querySelectorAll('.star');
+        stars.forEach((s, index) => {
+            if (index < rating) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

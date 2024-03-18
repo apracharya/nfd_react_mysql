@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/cast.css';
+import '../../styles/cast.css';
 
 const Cast = (props) => {
 

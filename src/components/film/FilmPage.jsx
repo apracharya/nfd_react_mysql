@@ -2,26 +2,38 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/film-page.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Cast from '../Cast';
+import Cast from './Cast';
 import Review from './Review';
-import Base from './Base';
+import Base from '../main/Base';
+import { getUser } from '../services/user-service';
+import { getCurrentUser } from '../auth/auth';
+import { Button } from 'reactstrap';
 
 const FilmPage = () => {
   let params = useParams();
   const [film, setFilm] = useState({});
   const [reviews, setReviews] = useState([]);
+  // const [currentUser, setCurrentUser] = useState({});
+  const [userRole, setUserRole] = useState([]);
 
   useEffect(()=>{
+    getUser(getCurrentUser()).then((response)=>{
+      console.log(response);
+      setUserRole(response.roles);
+      console.log(userRole);
+    }).catch((error)=>{
+    })
     axios.get(`http://localhost:8080/films/read/${params.id}`)
     .then((response)=>{
       setFilm(response.data);
       setReviews(response.data.reviews);
     })
-  }, [params.id])
+  }, [params.id, userRole])
 
 
   return (
     <Base>
+      {/* {JSON.stringify(currentUser)} */}
       <div className='film-detail-div'>
         <div className='main-flex'>
           <img className='movie-poster' src={`http://localhost:8080/films/image/${film.thumbnailSrc}`} alt={film.title} />
@@ -62,6 +74,15 @@ const FilmPage = () => {
         </div>
         <div className='cover-div'>
           {/* <img src="/thumbnails/cover/bijulimachine_cover.jpg" alt="cover" className='movie-cover' /> */}
+        </div>
+        <div style={{position: 'relative'}}>
+          {
+            userRole.length === 1 && (
+              <Button color="danger" style={{zIndex: '100', position: 'absolute', left: '530px', bottom: '15px'}}>
+                Delete Film
+              </Button>
+            )
+          }
         </div>
       </div> <br />
       <Cast title={film.title} casts={film.cast}/>

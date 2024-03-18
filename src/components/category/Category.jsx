@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import FilmCard from './FilmCard';
+import FilmCard from '../film/FilmCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Base from './Base';
+import Base from '../main/Base';
 
 const Category = () => {
   let params = useParams();
@@ -11,7 +11,7 @@ const Category = () => {
   useEffect(()=>{
     axios.get(`http://localhost:8080/films/read/category/${params.id}`)
     .then((response)=>{
-      console.log(response);
+      // console.log(response);
       setFilms(response.data);
     })
   }, [params.id]);
