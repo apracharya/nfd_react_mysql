@@ -19,6 +19,22 @@ export const createReview = (userReview) => {
     .then(response => {return response.data});
 }
 
+export const deleteReview = (reviewId) => {
+  return privateAxios.delete(`/reviews/delete/${reviewId}`).then(response => {return response.data});
+}
+
 export const searchFilm = (keyword) => {
   return myAxios.get(`/films/search/${keyword}`).then(response => {return response.data});
+}
+
+export const uploadFilmImage = (image, filmId)=>{
+  let formData = new FormData();
+  formData.append("image", image);
+
+  return privateAxios.post(`/films/image/upload/${filmId}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+    .then((response)=>response.data)
 }

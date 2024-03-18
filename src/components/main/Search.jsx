@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { searchFilm } from '../services/film-service';
 import { useNavigate, useParams } from 'react-router-dom';
 import Base from './Base';
-import FilmCard from './FilmCard';
+import FilmCard from '../film/FilmCard';
 
 const Search = () => {
   const [films, setFilms] = useState([]);

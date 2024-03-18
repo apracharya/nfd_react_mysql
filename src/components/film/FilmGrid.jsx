@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FilmCard from './FilmCard';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import PaginationComponent from '../PaginationComponent';
+import PaginationComponent from '../main/PaginationComponent';
 
 /* const films = [
   {
@@ -112,7 +112,7 @@ const FilmGrid = () => {
   useEffect(()=>{
     axios.get(`http://localhost:8080/films/read?pageSize=10&pageNumber=${page}`)
     .then((response)=>{
-      console.log(response);
+      // console.log(response);
       setFilms(response.data.content);
     })
   }, [page])

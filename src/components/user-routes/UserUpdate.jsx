@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from 'react'
+import { getCurrentUser } from '../auth/auth';
+import { getUser, signup } from '../services/user-service';
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
-import { signup } from './services/user-service';
-
 import { toast } from 'react-toastify';
-import Base from './main/Base';
-const Signup = () => {
+import Base from '../main/Base';
+
+
+const UserUpdate = () => {
+  
+  const [user, setUser] = useState({});
+  const username = getCurrentUser();
+
+  useEffect(()=>{
+    getUser(username).then((data)=>{
+      setUser(data);
+    }) 
+  }, [username]);
+
+
 
   const [data, setData] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    password: ''
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    password: user.password
   });
 
   const [error, setError] = useState({
@@ -18,9 +31,6 @@ const Signup = () => {
     isError: false
   })
 
-  useEffect(()=>{
-    
-  }, [data])
 
   const handleChange = (event, property) => {
     setData({ ...data, [property]: event.target.value });
@@ -79,7 +89,7 @@ const Signup = () => {
           <Col sm={{size:6, offset:3}}>
             <Card>
               <CardHeader>
-                <h3>Fill Info to Register</h3>
+                <h3>Fill Info to Update</h3>
               </CardHeader>
 
               <CardBody>
@@ -92,7 +102,7 @@ const Signup = () => {
                       placeholder="Enter username here" 
                       id="username"
                       onChange={(e)=>handleChange(e, 'username')}
-                      value={data.username}
+                      value={user.username}
                       invalid={error.errors?.response?.data?.message === 'User already exists' || error.errors?.response?.data?.username
                         ? true : false}
                       
@@ -111,7 +121,7 @@ const Signup = () => {
                       placeholder="Enter first name here" 
                       id="firstName"
                       onChange={(e)=>handleChange(e, 'firstName')}
-                      value={data.firstName}
+                      value={user.firstName}
                       invalid={error.errors?.response?.data?.firstName
                         ? true : false}
                       />
@@ -129,7 +139,7 @@ const Signup = () => {
                       placeholder="Enter last name here" 
                       id="lastName"
                       onChange={(e)=>handleChange(e, 'lastName')}
-                      value={data.lastName}
+                      value={user.lastName}
                       invalid={error.errors?.response?.data?.lastName
                         ? true : false}
                     />
@@ -141,7 +151,7 @@ const Signup = () => {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label htmlFor="password">Password: </Label>
+                    <Label htmlFor="password">New Password: </Label>
                     <Input 
                       type="password" 
                       placeholder="Enter password here" 
@@ -162,18 +172,14 @@ const Signup = () => {
                 </Form>
               </CardBody>
 
-              
-
-
             </Card>
           </Col>
 
         </Row>
-
         
       </Container>
     </Base>
   )
 }
 
-export default Signup
+export default UserUpdate

@@ -1,5 +1,5 @@
 import React from 'react';
-import FilmGrid from './FilmGrid';
+import FilmGrid from '../film/FilmGrid';
 import Base from './Base';
 
 const MainBody = () => {

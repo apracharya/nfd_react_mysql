@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import './Navbar.css'; // Import CSS for styling
 import PropTypes from "prop-types";
-// import LoginForm from '../LoginForm';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { doLogout, getCurrentUser, isLoggedIn } from '../auth/auth';
@@ -22,6 +21,7 @@ function Navbar(props) {
 
   const logout = ()=>{
     doLogout(()=>{
+      navigate("/");
       setLogin(false);
       setUser(undefined);
       toast.success("User logged out");
@@ -38,7 +38,7 @@ function Navbar(props) {
 
   const handleKeywordChange= (e)=>{
     setKeyword(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 
   const handleSearch = (e)=>{
@@ -110,7 +110,14 @@ function Navbar(props) {
                     return (<li key={i}><button onClick={()=>{navigate(`/category/${item.categoryId}`)}} className="dropdown-item">{item?.categoryTitle}</button></li>
                   )})}
                   <li><hr className="dropdown-divider" /></li>
-                  <li><button className="dropdown-item">Something else here</button></li>
+                  <li>
+                    <button onClick={()=>{navigate('/category/add')}}
+                      className="dropdown-item"
+                    >
+                        Add Category
+                    </button>
+                  
+                  </li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -163,7 +170,6 @@ function Navbar(props) {
           </div>
         </div>
       </nav>
-      {/* {loginVisible?<LoginForm visible="handleLoginVisible"/>:null} */}
     </div>
   );
 }

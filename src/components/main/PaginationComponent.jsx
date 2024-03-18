@@ -1,6 +1,6 @@
 // PaginationComponent.js
 import React from 'react';
-import '../styles/pagination.css'; // Import the CSS file for styling
+import '../../styles/pagination.css'; // Import the CSS file for styling
 import { NavLink } from 'react-router-dom';
 
 const PaginationComponent = () => {

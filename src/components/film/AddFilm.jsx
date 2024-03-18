@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, CardBody, Container, Form, Input, Label } from 'reactstrap';
 import Base from '../main/Base';
 import { loadAllCategories } from '../services/category-service';
-import { createFilm } from '../services/film-service';
+import { createFilm, uploadFilmImage } from '../services/film-service';
+import { toast } from 'react-toastify';
+import { NavLink } from 'react-router-dom';
 
 const AddFilm = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const [cast, setCast] = useState([]);
+  const [cast] = useState([]);
 
-  const [producer, setProducer] = useState([]);
+  const [producer] = useState([]);
+
+  const [image, setImage] = useState(null);
 
   const [filmDetails, setFilmDetails] = useState({
     title: 'title',
@@ -28,7 +32,7 @@ const AddFilm = () => {
 
   useEffect(()=>{
     loadAllCategories().then((data)=>{
-      console.log(data);
+      // console.log(data);
       setCategories(data);
     }).catch((error)=>{
       console.log(error);
@@ -48,20 +52,47 @@ const AddFilm = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    console.log(filmDetails);
+    // console.log(filmDetails);
     createFilm(filmDetails).then((response)=>{
-      console.log(response);
       
+      uploadFilmImage(image, response.id).then((response)=>{
+        console.log(response.id);
+        toast.success("Image uploaded!");
+      }).catch((error)=>{
+        toast.error("Error uploading image");
+        // console.log(error);
+      })
+
+      toast.success("Film created successfully!");
+      setFilmDetails({
+        title: '',
+        year: '',
+        runtime: '',
+        categoryId: 1,
+        summary: '',
+        trailerLink: '',
+        producer: [],
+        director: '',
+        cameraman: '',
+        cast: [],
+        rating: ''
+      })
     }).catch((error)=>{
       console.log(error);
     })
+  }
+
+  // handle file change event
+  const handleFileChange = (e)=>{
+    console.log(e.target.files[0]);
+    setImage(e.target.files[0]);
   }
 
 
 
   return (
     <Base className='mx-5'>
-      {JSON.stringify(filmDetails)}
+      {/* {JSON.stringify(filmDetails)} */}
       <div className='container' style={{maxWidth:'700px'}}>
 
         <div className='wrapper mx-5'>
@@ -107,7 +138,21 @@ const AddFilm = () => {
                         })
                       }
                     </Input>
+                    cant find category? <NavLink to='/category/add'>add here</NavLink>
                   </div>
+
+                    <div className="my-3">
+                      <Label htmlFor='image'>Upload Film Poster</Label>
+                      <Input 
+                        id='image' 
+                        name='image' 
+                        type='file'
+                        onChange={handleFileChange}>
+
+                      </Input>
+
+                    </div>
+
                   <div className='my-3'>
                     <Label for='summary'>Summary</Label>
                     <Input type='textarea' id='summary' 
