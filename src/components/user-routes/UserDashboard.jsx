@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Button } from 'reactstrap';
 import '../../styles/user-dashboard.css'; // Import the CSS file
 import { doLogout, getCurrentUser, isLoggedIn } from '../auth/auth';
 import Base from '../main/Base';
 import { deleteUser, getUser } from '../services/user-service';
-import { Button } from 'reactstrap';
-import { toast } from 'react-toastify';
 
 const UserDashboard = () => {
 
@@ -82,7 +82,7 @@ const UserDashboard = () => {
                 )
               }
             </div>
-            <NavLink to='/addmovie'>
+            <NavLink to='/user/movie/add'>
               <button className='signIn-button' style={{width: "90px", fontSize: '1rem', backgroundColor: '#a4a5a6'}}>
                 Add Movie
               </button>
@@ -98,12 +98,24 @@ const UserDashboard = () => {
               </button>
             </NavLink>
             
-            <Button
-             color='danger'
-             style={{width: "90px", fontSize: '1rem', marginLeft: '600px'}}
-             onClick={handleDeleteUser}>
-              Delete
-            </Button>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <NavLink to='/user/update'>
+                <Button
+                  color='primary'
+                  style={{width: "90px", fontSize: '1rem', marginLeft: '585px'}}
+                >
+                  Update
+                </Button>
+              </NavLink>
+
+              <Button className='ms-2'
+              color='danger'
+              style={{width: "90px", fontSize: '1rem'}}
+              onClick={handleDeleteUser}>
+                Delete
+              </Button>
+
+            </div>
             
 
         </div>

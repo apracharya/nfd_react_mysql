@@ -4,6 +4,10 @@ export const createFilm = (film) => {
   return privateAxios.post(`/films/create/category/${film.categoryId}`, film).then(response => {return response.data});
 }
 
+export const updateFilm = (film) => {
+  return privateAxios.put(`/films/update/${film.id}`, film).then(response => {return response.data});
+}
+
 // const user = getCurrentUser();
 // const [userDetails, setUserDetails] = useState({});
 // useEffect(()=>{
@@ -23,6 +27,10 @@ export const deleteReview = (reviewId) => {
   return privateAxios.delete(`/reviews/delete/${reviewId}`).then(response => {return response.data});
 }
 
+export const updateReview = (review) => {
+  return privateAxios.put(`/reviews/update/${review.id}`, review).then(response => {return response.data});
+}
+
 export const searchFilm = (keyword) => {
   return myAxios.get(`/films/search/${keyword}`).then(response => {return response.data});
 }
@@ -37,4 +45,8 @@ export const uploadFilmImage = (image, filmId)=>{
     }
   })
     .then((response)=>response.data)
+}
+
+export const deleteFilm = (filmId) => {
+  return privateAxios.delete(`/films/delete/${filmId}`).then(response => {return response.data});
 }

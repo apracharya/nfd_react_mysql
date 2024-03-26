@@ -86,7 +86,7 @@ function Navbar(props) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/addmovie'>
+                <NavLink to='/user/movie/add'>
                   <button className="signIn-button" style={{width: "90px"}}>Add Movie</button>
                 </NavLink>
 

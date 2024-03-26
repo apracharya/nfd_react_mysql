@@ -23,7 +23,7 @@ const Search = () => {
   return (
     <Base>
       <div style={{margin: '112px', marginTop: '10px'}}>
-        <div style={{color: 'black', margin: '40px 0px -30px 30px', fontSize: '25px'}}>Genre: {films[0]?.category?.categoryTitle}</div>
+        <div style={{color: 'black', margin: '40px 0px -30px 30px', fontSize: '25px'}}>Search result: {params.keyword}</div>
         <div className="film-grid">
           {films.map((film, i) => (
             <div key={i} onClick={()=>{navigate(`/films/${film.id}`)}}>

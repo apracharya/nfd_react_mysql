@@ -93,20 +93,30 @@ const Review = (props) => {
 
                 {
                   getCurrentUser() === review.user.username && (
-                    <Button 
-                      color="danger"
-                      onClick={() => deleteReview(review.id)
-                        .then((response) => {
-                          console.log(response)
-                          toast.success("Review deleted")
-                          navigate(`/films/${props.id}`)
-                          // setReviews(reviews.filter(review => review.id !== review.id))
-                        })
-                        .catch((error) => console.log(error))
-                      }
-                    >
-                      Delete
-                    </Button>
+                    <>
+                      <Button 
+                        color="danger"
+                        onClick={() => deleteReview(review.id)
+                          .then((response) => {
+                            console.log(response)
+                            toast.success("Review deleted")
+                            navigate(`/films/${props.id}`)
+                            // setReviews(reviews.filter(review => review.id !== review.id))
+                            window.location.reload();
+                          })
+                          .catch((error) => console.log(error))
+                        }
+                        >
+                          Delete
+                      </Button>
+
+                      {/* update button */}
+                      <Button style={{marginLeft: '10px'}}
+                        color="primary"
+                      >
+                        Update
+                      </Button>
+                    </>
                   )
                 }
               </div>
@@ -141,7 +151,12 @@ const Review = (props) => {
                 onChange={handleReviewChange}
               />
                 
-              <Button type="submit" color='warning' onClick={() => console.log(userReview)}>Submit Review</Button>
+              <Button type="submit" color='warning' 
+                onClick={() => {
+                  console.log(userReview)
+                  window.location.reload();
+                }
+                }>Submit Review</Button>
             </form>
           </div>
         </div>

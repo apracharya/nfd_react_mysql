@@ -1,83 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { getCurrentUser } from '../auth/auth';
-import { getUser, signup } from '../services/user-service';
-import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap'
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, FormGroup, Input, Label, Row } from 'reactstrap';
+import { getCurrentUser } from '../auth/auth';
 import Base from '../main/Base';
+import { getUser, userUpdate } from '../services/user-service';
 
 
 const UserUpdate = () => {
+
+  const currentUser = getCurrentUser();
+
+  const [error] = useState({});
   
   const [user, setUser] = useState({});
-  const username = getCurrentUser();
+
+  const [data] = useState({});
 
   useEffect(()=>{
-    getUser(username).then((data)=>{
+    getUser(currentUser).then((data)=>{
       setUser(data);
-    }) 
-  }, [username]);
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }, [currentUser]); // [currentUser] is a dependency which might cause problems
 
-
-
-  const [data, setData] = useState({
-    username: user.username,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    password: user.password
-  });
-
-  const [error, setError] = useState({
-    errors: {},
-    isError: false
-  })
-
-
-  const handleChange = (event, property) => {
-    setData({ ...data, [property]: event.target.value });
+  const handleChange = (e, name)=>{
+    setUser({...user, [name]: e.target.value});
+    console.log(user);
   }
 
   const resetData = ()=>{
-    setData({
-      username: '',
-      firstName: '',
-      lastName: '',
-      password: ''
-    })
+    setUser({});
   }
 
-  const submitForm = (e) => {
+  const submitForm = (e)=>{
     e.preventDefault();
-    // console.log(data);
-
-    // call server
-    signup(data).then((response)=>{
-      // console.log(response);
-
-      /* if(error.isError) {
-        toast.error("Form data is invalid!");
-        setError({...error, isError: false});
-        return;
-      } */
-
-
-      // console.log("success log")
-      toast.success("User Registered Successfully")
-      setData({
-        username: '',
-        firstName: '',
-        lastName: '',
-        password: ''
-      })
+    userUpdate(user).then((data)=>{
+      console.log(data);
+      toast.success('User updated');
     }).catch((error)=>{
-      // console.log(error);
-      // console.log("error log");
-      // handle error
-      toast.error("Something went wrong");
-      setError({
-        errors: error,
-        isError: true
-      })
-
+      console.log(error);
+      toast.error('User update failed');
     })
   }
 
@@ -99,6 +62,7 @@ const UserUpdate = () => {
                     <Label htmlFor="username">Username: </Label>
                     <Input
                       type="text" 
+                      disabled={true}
                       placeholder="Enter username here" 
                       id="username"
                       onChange={(e)=>handleChange(e, 'username')}
