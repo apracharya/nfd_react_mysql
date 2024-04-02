@@ -21,6 +21,6 @@ export const deleteUser = (username) => {
 }
 
 export const userUpdate = (user)=>{
-  return privateAxios.put(`/users/update/${user.id}`, user)
+  return privateAxios.put(`/users/update/${user.username}`, user)
     .then(response => response.data);
 }

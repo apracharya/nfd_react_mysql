@@ -1,0 +1,49 @@
+/* Style the select element */
+.select {
+    margin-left: 5px;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 14px;
+    width: 100px; /* Adjust the width as needed */
+}
+
+.select:active {
+    /* border: 1px solid black; */
+    background-color: rgb(99, 99, 255);
+
+}
+
+/* Style the option elements */
+.select option {
+    background-color: #ffffff;
+    color: #363636;
+    padding: 5px;
+    font-size: 14px;
+    transition: background-color 300ms;
+}
+
+/* Hover effect for options */
+.select option:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.sort-dir-button {
+    padding-bottom: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    margin-left: 5px;
+    background: whitesmoke;
+    border: none;
+    border-radius: 45px;
+    transition: background-color 170ms;
+}
+
+.sort-dir-button:hover {
+    background-color: rgb(221, 219, 219);
+    cursor: pointer;
+}

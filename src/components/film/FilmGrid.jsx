@@ -3,6 +3,7 @@ import FilmCard from './FilmCard';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import PaginationComponent from '../main/PaginationComponent';
+import '../../styles/dropdown-select.css';
 
 /* const films = [
   {
@@ -107,15 +108,39 @@ import PaginationComponent from '../main/PaginationComponent';
 const FilmGrid = () => {
   let params = useParams();
   const [films, setFilms] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+
   let page = parseInt(params.page) - 1;
 
+  const [sortBy, setSortBy] = useState('id');
+  const [sortDir, setSortDir] = useState('asc');
+  const [sortDirButton, setSortDirButton] = useState('↑');
+
+  const handleSort = (e) => {
+    // console.log(e.target.value)
+    setSortBy(e.target.value);
+  }
+  const handleSortDir = (e) => {
+    // console.log(e.target.value)
+    if(sortDirButton === '↑') {
+      setSortDirButton('↓');
+      setSortDir('desc');
+    } else {
+      setSortDirButton('↑');
+      setSortDir('asc');
+    }
+    // setSortDir(e.target.value);
+  }
+
   useEffect(()=>{
-    axios.get(`http://localhost:8080/films/read?pageSize=10&pageNumber=${page}`)
+    axios.get(`http://localhost:8080/films/read?sortBy=${sortBy}&sortDir=${sortDir}&pageSize=10&pageNumber=${page}`)
     .then((response)=>{
       // console.log(response);
       setFilms(response.data.content);
+      setTotalPages(response.data.totalPages);
+      // console.log(totalPages);
     })
-  }, [page])
+  }, [page, sortBy, sortDir])
 
   let navigate = useNavigate();
 
@@ -123,15 +148,36 @@ const FilmGrid = () => {
 
   return (
     <div>
-      <div style={{margin: '40px 0 -30px 20px', fontSize: '20px'}}>Page {pageNo}</div>
+      <div style={{margin: '40px 0 -30px 20px', fontSize: '20px'}}>
+        PAGE {pageNo}
+        <span style={{fontSize: '16px', position: 'absolute', left: '68%'}}>
+          <span>
+            Sort By:
+          </span>
+          <select className='select'
+            onChange={handleSort}
+          >  
+            <option value="id">Default</option>
+            <option value="title">Title</option>
+            <option value="year">Year</option>
+            <option value="category">Category</option>
+          </select>
+          <button className='sort-dir-button' onClick={handleSortDir}>
+          {sortDirButton}
+          </button>
+        </span>
+      </div>
       <div className="film-grid">
         {films.map((film, i) => (
-          <div key={i} onClick={()=>{navigate(`/films/${film.id}`)}}>
+          <div key={i} onClick={()=>{
+            navigate(`/films/${film.id}`)
+            window.scrollTo(0, 0)
+            }}>
             <FilmCard {...film} />
           </div>
         ))}
       </div>
-      <PaginationComponent />
+      <PaginationComponent totalPages={totalPages} />
     </div>
   );
 };

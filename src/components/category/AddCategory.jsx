@@ -39,7 +39,7 @@ const AddCategory = () => {
 
   return (
     <Base className='mx-5'>
-      {JSON.stringify(category)}
+      {/* {JSON.stringify(category)} */}
       <div className='container' style={{maxWidth:'700px'}}>
 
         <div className='wrapper mx-5'>

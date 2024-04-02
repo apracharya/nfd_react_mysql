@@ -12,23 +12,26 @@ import UserDashboard from '../components/user-routes/UserDashboard'
 import PrivateRoute from './PrivateRoute'
 import AddCategory from '../components/category/AddCategory'
 import UserUpdate from '../components/user-routes/UserUpdate'
+import UpdateFilm from '../components/film/UpdateFilm'
 
 const MyRoute = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Navigate to="/page/1" />} />
+        <Route path="/search/" element={<Navigate to="/page/1" />} />
         <Route path='/page/:page' element={<MainBody></MainBody>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/signin' element={<Login></Login>}></Route>
         <Route path='/signin' element={<Login></Login>}></Route>
-        <Route path='/addmovie' element={<AddFilm />}></Route>
         <Route path='/category/:id' element={<Category />}></Route>
         <Route path='/about-us' element={<About />}></Route>
         <Route path='/films/:id' element={<FilmPage />}></Route>
         <Route path='/category/add' element={<AddCategory />}></Route>
         <Route path='/search/:keyword' element={<Search />}></Route>
         <Route path='/user' element={<PrivateRoute />}>
+          <Route path='movie/add' element={<AddFilm />}></Route>
+          <Route path='movie/update/:id' element={<UpdateFilm />}></Route>
           <Route path='dashboard' element={<UserDashboard />}></Route>
           <Route path='update' element={<UserUpdate />}></Route>
         </Route>
