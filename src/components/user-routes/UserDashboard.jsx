@@ -27,19 +27,21 @@ const UserDashboard = () => {
   }, [username]);
 
   const handleDeleteUser = ()=>{
-    deleteUser(username).then(data => {
-      console.log(data);
-      toast.success("User deleted");
-      doLogout(()=>{
-        // setLogin(false);
-        setUser(undefined);
-        toast.success("User logged out");
-        navigate('/');
-      });
-    }).catch(error => {
-      toast.error("something went wrong");
-      console.log(error);
-    })
+    if (window.confirm(`Are you sure you want to delete user?`)) {
+      deleteUser(username).then(data => {
+        console.log(data);
+        toast.success("User deleted");
+        doLogout(()=>{
+          // setLogin(false);
+          setUser(undefined);
+          toast.success("User logged out");
+          navigate('/');
+        });
+      }).catch(error => {
+        toast.error("something went wrong");
+        console.log(error);
+      })
+    }
     
   }
 

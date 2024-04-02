@@ -30,7 +30,11 @@ const UserUpdate = () => {
   }
 
   const resetData = ()=>{
-    setUser({});
+    getUser(currentUser).then((data)=>{
+      setUser(data);
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
 
   const submitForm = (e)=>{
@@ -130,8 +134,12 @@ const UserUpdate = () => {
                     </FormFeedback>
                   </FormGroup>
                   <Container>
-                    <Button className='mx-2'>Register</Button>
-                    <Button onClick={resetData}>Reset</Button>
+                    <Button color='danger' style={{marginLeft: '-15px'}}>Update</Button>
+                    <Button
+                      className='ms-2' 
+                      color='primary' 
+                      onClick={resetData}
+                    >Reset</Button>
                   </Container>
                 </Form>
               </CardBody>

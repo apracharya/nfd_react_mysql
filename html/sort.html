@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Dropdown</title>
+    <style>
+        /* Basic styling for the dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style the initial display text */
+        .dropdown .selected-option {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        /* Style the dropdown options */
+        .dropdown .options {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width: 200px;
+            z-index: 1;
+        }
+
+        .dropdown .options a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <div class="selected-option">Sort by: <span id="selected-sort">LATEST</span></div>
+        <div class="options">
+            <a href="#">LATEST</a>
+            <a href="#">MOST COMMENTED</a>
+            <a href="#">MOST VIEWED</a>
+            <a href="#">MOST LIKED</a>
+            <a href="#">TITLE</a>
+            <a href="#">HIGHEST RATED</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle dropdown behavior
+        const selectedOption = document.getElementById('selected-sort');
+        const optionsList = document.querySelector('.options');
+
+        selectedOption.addEventListener('click', () => {
+            optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Handle option selection (you can use AJAX or other logic here)
+        optionsList.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                selectedOption.textContent = event.target.textContent;
+                optionsList.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

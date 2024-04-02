@@ -35,7 +35,7 @@ const Review = (props) => {
     setUserReview({...userReview, body: e.target.value, rating: selectedRating})
     // setUserReview({...userReview, [e.target.name]: e.target.value});
     
-    console.log(userReview);
+    // console.log(userReview);
   };
 
   const handleSubmit = (e) => {
@@ -52,9 +52,11 @@ const Review = (props) => {
           setUserReview({
             body: ''
           })
+          setSelectedRating(0);
           toast.success("review created");
         }).catch((error) => {
-          toast.error("Something went wrong!")
+          // console.log(error);
+          toast.error("Something went wrong!");
         });
       } else {
         toast.success("please login");
@@ -68,7 +70,6 @@ const Review = (props) => {
   //   const newText = currentText === "▲ Upvote" ? "Remove Vote" : "▲ Upvote";
   //   voteButton.textContent = newText;
   // }
-
 
   return (
       <div className="review-body">
@@ -96,15 +97,19 @@ const Review = (props) => {
                     <>
                       <Button 
                         color="danger"
-                        onClick={() => deleteReview(review.id)
-                          .then((response) => {
-                            console.log(response)
-                            toast.success("Review deleted")
-                            navigate(`/films/${props.id}`)
-                            // setReviews(reviews.filter(review => review.id !== review.id))
-                            window.location.reload();
-                          })
-                          .catch((error) => console.log(error))
+                        onClick={() => {
+                          if (window.confirm(`Are you sure you want to delete this review?`)) {
+                            deleteReview(review.id)
+                            .then((response) => {
+                              // console.log(response)
+                              toast.success("Review deleted")
+                              navigate(`/films/${props.id}`)
+                              // setReviews(reviews.filter(review => review.id !== review.id))
+                              window.location.reload();
+                            })
+                            .catch((error) => console.log(error))
+                            }
+                          }                   
                         }
                         >
                           Delete
@@ -153,7 +158,7 @@ const Review = (props) => {
                 
               <Button type="submit" color='warning' 
                 onClick={() => {
-                  console.log(userReview)
+                  // console.log(userReview)
                   window.location.reload();
                 }
                 }>Submit Review</Button>
