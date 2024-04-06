@@ -4,6 +4,7 @@ import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormFeedback,
 import { getCurrentUser } from '../auth/auth';
 import Base from '../main/Base';
 import { getUser, userUpdate } from '../services/user-service';
+import { useNavigate } from 'react-router-dom';
 
 
 const UserUpdate = () => {
@@ -15,6 +16,8 @@ const UserUpdate = () => {
   const [user, setUser] = useState({});
 
   const [data] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     getUser(currentUser).then((data)=>{
@@ -42,6 +45,7 @@ const UserUpdate = () => {
     userUpdate(user).then((data)=>{
       console.log(data);
       toast.success('User updated');
+      navigate('/user/dashboard');
     }).catch((error)=>{
       console.log(error);
       toast.error('User update failed');

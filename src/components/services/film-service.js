@@ -50,3 +50,7 @@ export const uploadFilmImage = (image, filmId)=>{
 export const deleteFilm = (filmId) => {
   return privateAxios.delete(`/films/delete/${filmId}`).then(response => {return response.data});
 }
+
+export const approveFilm = (filmId) => {
+  return privateAxios.put(`/films/approve/${filmId}`).then(response => {return response.data});
+}

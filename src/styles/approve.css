@@ -1,0 +1,111 @@
+/* Reset styles */
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+} */
+
+.image {
+    padding: 10px;
+    max-width: 200px; 
+    display: inline-block;
+}
+
+.admin-dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.approve-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.approve-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.approve-movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-gap: 20px;
+}
+
+.approve-movie {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+}
+
+.approve-movie img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.approve-movie-details {
+    padding: 20px;
+    display: inline-block;
+}
+
+.approve-movie-details h2 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.approve-movie-details p {
+    margin-bottom: 20px;
+}
+
+.approve-button-group {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.approve-button,
+.approve-edit-button,
+.approve-delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.95;
+    transition: background-color 150ms;
+}
+
+.approve-button:hover {
+    background-color: #429e45;
+}
+.approve-edit-button:hover {
+    background-color: #dfdf18;
+}
+.approve-delete-button:hover {
+    background-color: #db362a;
+}
+
+
+.approve-button {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.approve-delete-button {
+    background-color: #f44336;
+    color: #fff;
+}
+.approve-edit-button {
+    background-color: #d5d522;
+    color: #fff;
+}
