@@ -93,10 +93,10 @@ const AddFilm = () => {
 
   return (
     <Base>
-      <div className="alert alert-warning" role="alert">
+      {/* <div className="alert alert-warning" role="alert">
         <h4 className="alert-heading">Warning!</h4>
         <p className="mb-0">You might need to have admin role to use this feature!</p>
-      </div>
+      </div> */}
       {/* {JSON.stringify(filmDetails)} */}
       <div className='container' style={{maxWidth:'700px'}}>
 

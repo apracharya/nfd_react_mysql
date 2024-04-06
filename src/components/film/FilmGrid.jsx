@@ -168,7 +168,9 @@ const FilmGrid = () => {
         </span>
       </div>
       <div className="film-grid">
-        {films.map((film, i) => (
+        {films.filter((film) => {
+          return film.approved !== false
+        }).map((film, i) => (
           <div key={i} onClick={()=>{
             navigate(`/films/${film.id}`)
             window.scrollTo(0, 0)
