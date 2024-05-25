@@ -23,6 +23,7 @@ const FilmPage = () => {
   const [filmCategory, setFilmCategory] = useState(1);
   
   useEffect(()=>{
+    
     getUser(getCurrentUser()).then((response)=>{
       // console.log(response);
       setUserRole(response?.roles);
@@ -31,7 +32,7 @@ const FilmPage = () => {
     })
     axios.get(`http://localhost:8080/films/read/${params.id}`)
     .then((response)=>{
-      // console.log(response);
+      console.log(response);
       setFilm(response.data);
       setReviews(response.data.reviews);
       setFilmCategory(response.data.category?.categoryId);

@@ -179,7 +179,9 @@ const FilmGrid = () => {
           </div>
         ))}
       </div>
-      <PaginationComponent totalPages={totalPages} />
+      <div className='mb-3'>
+        <PaginationComponent totalPages={totalPages} />
+      </div>
     </div>
   );
 };

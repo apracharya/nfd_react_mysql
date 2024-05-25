@@ -73,7 +73,7 @@ const Signup = () => {
 
   return (
     <Base>
-      <Container>
+      <Container className='py-4'>
 
         <Row>
           <Col sm={{size:6, offset:3}}>

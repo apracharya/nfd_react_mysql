@@ -94,7 +94,7 @@ const UserDashboard = () => {
 
   return (
     <Base>
-      <div style={{ backgroundColor: "#f2f2f2" }}>
+      <div className="py-3" style={{ backgroundColor: "#f2f2f2" }}>
         <div className="dash-body">
           <div className="dash-container">
             <h1 className="dash-h1">User Dashboard</h1>
@@ -190,7 +190,7 @@ const UserDashboard = () => {
           </div>
         </div>
         {user.roles && user.roles[0]?.name === "ROLE_ADMIN" && (
-          <div className="container">
+          <div className="py-3">
             <header className="approve-header">
               <h1>Movie Approval Queue</h1>
             </header>
@@ -221,7 +221,7 @@ const UserDashboard = () => {
                               <p>{film.year}</p>
                               <p>Director: {film.director}</p>
                               <p>Producer: {film.producer.join(", ")}</p>
-                              <p>Genre: {film.genre}</p>
+                              <p>Genre: {film.category?.categoryTitle}</p>
                               <div className="approve-button-group">
                                 <Button
                                   color="success"

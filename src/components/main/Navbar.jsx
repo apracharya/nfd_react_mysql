@@ -145,7 +145,7 @@ function Navbar(props) {
                       </button>
                     </NavLink>
                     
-                    <NavLink>
+                    <NavLink to={"/"}>
                       <button 
                         className='signIn-button'
                         onClick={logout}>Logout</button>

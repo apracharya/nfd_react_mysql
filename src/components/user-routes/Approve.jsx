@@ -92,7 +92,7 @@ const Approve = () => {
                     <p>{film.year}</p>
                     <p>Director: {film.director}</p>
                     <p>Producer: {film.producer.join(", ")}</p>
-                    <p>Genre: {film.genre}</p>
+                    <p>Genre: {film.category?.categoryTitle}</p>
                     <div class="approve-button-group">
                       <button onClick={()=>{handleApproveFilm(film.id)}} class="approve-button">Approve</button>
                       <button className="approve-edit-button">Edit</button>

@@ -13,6 +13,7 @@ import PrivateRoute from './PrivateRoute'
 import AddCategory from '../components/category/AddCategory'
 import UserUpdate from '../components/user-routes/UserUpdate'
 import UpdateFilm from '../components/film/UpdateFilm'
+import Signin from '../components/user-routes/Signin'
 
 const MyRoute = () => {
   return (
@@ -23,6 +24,7 @@ const MyRoute = () => {
         <Route path='/page/:page' element={<MainBody></MainBody>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/signin' element={<Login></Login>}></Route>
+        <Route path='/login' element={<Signin></Signin>}></Route>
         <Route path='/signin' element={<Login></Login>}></Route>
         <Route path='/category/:id' element={<Category />}></Route>
         <Route path='/about-us' element={<About />}></Route>

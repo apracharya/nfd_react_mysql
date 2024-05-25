@@ -6,7 +6,7 @@ const About = () => {
   return (
     <Base>
       <div className="body">
-        <div className="container">
+        <div className="about-container">
           <h1 className="h1">Meet Our Team</h1>
           <img src="/icons/graphic.jfif" alt="Graphic" className="graphic" />
           <div className="team-member">
